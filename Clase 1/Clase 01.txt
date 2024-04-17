@@ -1,0 +1,172 @@
+Introducción:
+
+El lenguaje C fue creado por Dennis Ritchie entre 1969 y 1972 como evolución del lenguaje B. Al igual que B, es un lenguaje orientado a la implementación de sistemas operativos, concretamente Unix. C es apreciado por la eficiencia del código que produce y es el lenguaje de programación más popular para crear software de sistema, aunque también se utiliza para crear aplicaciones
+
+
+
+Partes del código:
+
+un programa básico de C se compone por las siguientes partes:
+
+Directivas del Preprocesador: como introducción estaremos utilizando las cabeceras donde agregamos las Bibliotecas de donde se obtienen las funciones que el preprocesador debe identificar, a través de la nomenclatura #include <biblioteca>
+
+EJ.  #include <stdio.h>
+
+Estaremos desarrollando mas adelante las operaciones que podemos realizar con # (Pragma)
+
+Declaraciones Globales
+
+Luego de las bibliotecas se pueden declarar las variables globales, lo que se debe tener en cuenta que durante el desarrollo de esta materia no se utilizarán variables globales.
+
+Declaración de funciones
+
+Las funciones se declaran con el siguiente formato TIPO DE DATO     NOMBRE(PARÁMETROS);
+
+Ej  
+
+int capturar();
+
+int funcion1( int a, char b);
+
+Las ventajas de utilizar las declaraciones de funciones es que las demás funciones pueden verlas en su ámbito y poder invocarlas.  Es decir si la función no fue declarada solo podrá utilizar las funciones desarrolladas en lineas anteriores. Para que todas las funciones no tengan problemas del ámbito se recomienda desarrollar las funciones posterior a la función main.
+
+La función mas importante es la denominada main en un programa a compilarse debe estar presente dicha función y es esta la que inicia la ejecución del programa.
+
+Si una función es declarada con un tipo de dato esta debe devolver una variable de este mismo tipo, en caso que no se quiera devolver ninguna variable se utiliza el tipo de dato void
+
+Declaración de variables
+
+Para esta primera parte estaremos utilizando los siguientes tipos de datos int (entero), char(caracter) y float (coma flotante) 
+
+Ej int numero;
+
+int a,b,c;
+
+char letra;
+
+float coma_flotante;
+
+Si quieren declarar varias variables de un mismo tipo se los hace separado de comas, así como también se pueden inicializar igualando a un valor.
+
+ej int a=0
+
+Se debe tener en cuenta también que desde la linea donde es declarada puede ser utilizada dentro del código.
+
+Llamada a una función
+
+Si se desea invocar una función se hace sin utilizar los tipos de datos, siguiento el mismo orden de parámetros 
+
+ej la funcion declarada int funcion1(int a, int b);
+
+se la invoca
+
+q=funcion1(a,b)
+
+donde se espera un entero por lo que se iguala a una variable.
+
+Puntos a tener en cuenta
+
+En este lenguaje luego de una sentencia se finaliza con ; (punto y coma) ya que antes de compilarse el precompilador eliminará todos los espacios vacíos dentro del código.
+
+Cada bloque se delimita por las llaves { }
+
+En el lenguaje ante la existencia de una asignación primero se evalúa la derecha y luego la izquierda ej:
+
+a=a+1 
+
+Primero se realiza la operación de suma y luego se asigna el valor por lo que no se tienen inconsistencias por trabajar sobre la misma variable.
+
+Sentencia if
+
+al programar utilizamos la sentencia de la siguiente manera if(variable==1) en donde se pregunta si la variable es igual a 1 en caso de utilizar un solo signo de Igual, estaremos  asignando el valor y luego evaluando la variable es decir. Si escribimos if(variable=1) se entiende que la variable es 1 por lo que se evalua if(variable).
+
+En c dentro de una condicional cualquier valor distinto a 0 es verdadero.
+
+Luego de la pregunta condicional el código siguiente se escribe dentro de llaves determinando el bloque, en caso de que no se utilicen las llaves solo se considera dentro del bloque a la primera línea siguiente.
+
+Ej
+
+if(variable==1)
+
+a=b;
+
+c=b;// esta ultima linea ya no corresponde a la sentencia debido a que no se están utilizando llaves.
+
+
+
+Además tenemos las variaciones en donde si se deben utilizar las llaves:
+
+if(CONDICION)
+
+{
+
+}
+
+else
+
+{
+
+}
+
+
+
+o la forma
+
+if(CONDICION)
+
+{
+
+}
+
+else if(CONDICION2)
+
+{
+
+}
+
+else
+
+{
+
+}
+
+
+
+Bucle while ()
+es una sentencia de control la cual lleva implícita la sentencia if y se repetirá hasta que se cumpla la condición de salida. En caso de no usar llaves se tendrá en consideración la primera línea siguiente a la condición.
+ej
+
+while (a==1)
+
+{
+
+...
+
+a=0;
+
+}
+
+Función printf()
+
+Se utiliza para imprimir en consola el formato es el siguiente printf("texto a imprimir con una variable %d",numero); se pueden imprimir n variables de acuerdo a las declaraciones de tipo de datos de la salida
+
+Donde se utiliza el % para determinar la variable a utilizar  d o i para determinar un entero, c para un caracter y f para los float
+
+Funcion scanf()
+
+se utiliza para capturar variables desde las consola 
+
+Ej scanf("%d",&numero);
+
+getchar();
+
+se utiliza la función auxiliar getchar() para capturar el enter.
+
+El & se utiliza para invocar la dirección de la variable numero, esta utilización estaremos profundizando mas adelante.
+
+Empecemos a programar
+
+Códigos de ejemplo hola mundo se desarrollará en el video.
+
+Numero primo
+

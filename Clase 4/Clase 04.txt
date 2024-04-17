@@ -1,0 +1,255 @@
+Algoritmos de Ordenamiento Lineal
+
+Por ordenar se entiende el proceso de reorganizar un conjunto de objetos en una cierta secuencia de acuerdo a un criterio especificado. En general, el objetivo de este proceso es facilitar la posterior búsqueda de elementos en el conjunto ordenado.
+
+
+
+Existen múltiples ejemplos reales de conjuntos que requieren ser ordenados: la guía telefónica, índices de libros, ficheros de bibliotecas, diccionarios, ficheros de diverso tipo en oficinas, actas de exámenes, etc.
+
+Veremos algunos algoritmos de ordenación lineal más conocidos.
+
+
+
+BubleSort
+
+La idea de este método es ir tomando los elementos de a dos e ir comparándolos e intercambiándolos de ser necesario, hasta que todos los elementos sean comparados.
+
+for (i=0; i<n-1; i++)
+
+{
+
+for (j=i+1; j<n; j++)
+
+{
+
+if(V[i]>V[j])
+
+{
+
+aux = V[i];
+
+V[i] = V[j];
+
+V[j] = aux;
+
+}
+
+}
+
+}
+
+El bucle externo establece un desplazamiento secuencial dentro del vector desde el primer elemento hasta el penúltimo , el bucle interno realiza un recorrido del vector desde el elemento i+1 hasta el último elemento del vector y va reduciendo en cada iteración del bucle externo el número de elementos a comparar, ya que los elementos anteriores ya debieron ordenarse en las iteraciones anteriores.
+
+Ahora bien, lo que se quiere es ordenar todos los valores, para lo cual se compara el elemento i con los subsiguientes elementos del vector e intercambiándolo cuando sea mayor que alguno de los elementos ubicado en alguna posición inferior del vector, en este intercambio es que se genera la burbuja, donde los elementos más pequeños van subiendo y los más grandes se van ubicando en las posiciones inferiores del vector.
+
+La evolución del método muestra que cada elemento del vector desde el primer elemento hasta el penúltimo se van comparando con los subsiguientes (no con los anteriores), ya que los elementos se han comparado en las iteraciones anteriores
+
+La falencia de este método es que como sí o sí va a hacer n - 1 pasadas, muchas veces puede hacer pasadas inclusive con el vector ya ordenado. Por lo tanto, una mejora para este método consiste en establecer un mecanismo para que verifique cuando el vector este ya ordenado.
+
+Si queremos ordenar el vector descendente cambiamos el signo en la condición del SI por V[i]< V[j].
+
+Ventajas
+
+A) Fácil implementación
+
+B) No requiere memoria adicional
+
+C) Realiza numerosos intercambios
+
+Desventajas
+
+A) Muy lento
+
+B) Realiza numerosas comparaciones
+
+
+
+SelectionSort
+
+Entre los métodos elementales de ordenación de vectores se encuentra el algoritmo de selección:
+
+for (i=0; i<n; i++)
+
+{
+
+imin=i;
+
+for (j=i+1; j<n; j++)
+
+{
+
+if(V[j]<V[imin])
+
+imin=j;
+
+}
+
+aux = V[i];
+
+V[i] = V[imin];
+
+V[imin] = aux;
+
+}
+
+Es decir, el método se basa en buscar en cada iteracción el mínimo elemento del “subvector” situado entre el índice i y el final del vector e intercambiarlo con el de índice i. Tomando la dimensión del vector n como tamaño del problema es inmediato que el bucle se repite n veces y por tanto la función que da el número de repeticiones es de tipo lineal (ONo). La operación interior al bucle se puede desarrollar a su vez como:
+
+imin:=i;
+
+para j desde i+1 hasta n hacer
+
+si V[j]<V[imin] entonces imin:=j fsi
+
+fpara
+
+intercambiar(V[i],V[imin])
+
+Es interesante observar que en este algoritmo el contenido de los datos de entrada, no influye en el coste del algoritmo. En efecto se puede comprobar (aplicar el algoritmo sobre varios vectores ejemplo), que se ejecutan de forma completa ambos bucles tanto para vector desordenado como para vector ordenado.
+
+Ventajas
+
+A) Fácil implementación
+
+B) No requiere memoria adicional.
+
+C) Realiza pocos intercambios.
+
+D) Rendimiento constante: poca diferencia entre el peor y el mejor caso
+
+Desventajas
+
+A) Lento
+
+B) Realiza numerosas comparaciones.
+
+C) Este es un algoritmo lento
+
+No obstante, ya que sólo realiza un intercambio en cada ejecución del ciclo externo, puede ser una buena opción para listas con registros grandes y claves pequeñas.
+
+
+
+InsertionSort
+
+En este procedimiento se recurre a una búsqueda binaria en lugar de una búsqueda secuencial para insertar un elemento en la parte de arriba del arreglo, que ya se encuentra ordenado. El proceso, al igual que en el método de inserción directa, se repite desde el segundo hasta el n-ésimo elemento.
+
+for(i=1; i<n; i++) {
+
+temp = V[i];
+
+Izq = 0;
+
+Der = i-1;
+
+while(Izq <= Der){
+
+Medio = (Izq+Der)/2;
+
+if (temp < V[Medio])
+
+Der = Medio - 1;
+
+else
+
+Izq = Medio + 1;
+
+}
+
+for (j=i-1; j>=Izq; j--){
+
+V[j+1]=V[j];
+
+}
+
+V[Izq] = temp;
+
+}
+
+
+
+Ventajas
+
+A) Fácil implementación
+
+B) No requiere memoria adicional.
+
+Desventajas
+
+A) Lento.
+
+B) En promedio hace numerosas comparaciones.
+
+
+
+ShellSort
+
+Denominado así por su desarrollador Donald Shell (1959), ordena una estructura de una manera similar a la del Bubble Sort, sin embargo no ordena elementos adyacentes sino que utiliza una segmentación entre los datos. Esta segmentación puede ser de cualquier tamaño de acuerdo a una secuencia de valores que empiezan con un valor grande (pero menor al tamaño total de la estructura) y van disminuyendo hasta llegar al '1'.
+
+Este método funciona de la siguiente manera:
+
+Ordena subgrupos de elementos separados K unidades (respecto de su posición en el arreglo) del arreglo original. El valor K es llamado incremento.
+
+Después de que los primeros K subgrupos han sido ordenados, se escoge un nuevo valor de K más pequeño, y el arreglo es de nuevo partido entre el nuevo conjunto de subgrupos. Cada uno de los subgrupos mayores es ordenado y el proceso se repite de nuevo con un valor más pequeño de K.
+
+Eventualmente el valor de K llega a ser 1, de tal manera que el subgrupo consiste de todo el arreglo ya casi ordenado.
+
+Al principio del proceso se escoge la secuencia de decrecimiento de incrementos; el último valor debe ser 1.
+
+"Es como hacer un ordenamiento de burbuja pero comparando e intercambiando elementos."
+
+Cuando el incremento toma un valor de 1, todos los elementos pasan a formar parte del subgrupo y se aplica inserción directa.
+
+Algoritmo:
+
+void shellsort(int vector[], int n)
+
+{
+
+int gap,j,i,temp;
+
+for ( gap = n/2; gap > 0; gap /= 2)
+
+{
+
+for ( i = gap; i < n; i += 1)
+
+{
+
+temp = vector[i];
+
+int j;
+
+for (j = i; j >= gap && vector[j - gap] > temp; j -= gap)
+
+vector[j] = vector[j - gap];
+
+vector[j] = temp;
+
+}
+
+}
+
+}
+
+
+Generación de números pseudos aleatorios
+
+En el lenguaje C podemos utilizar una función disponible dentro de la biblioteca stdlib.h donde en combinación con una función de tiempo dentro de la biblioteca time.h (también se puede usar una variante de la biblioteca math.h)
+
+La generación se compone de dos partes la semilla y la función generadora.
+
+La semilla se recomienda poner dentro de la función main, solo se llama una sola vez por lo que no es necesario poner en otros lugares. La nomenclatura es la siguiente:
+
+srand(time(null));
+
+De esta manera indicamos al sistema operativo que estaremos consultando los ciclos de reloj.
+
+La segunda parte la funcion rand(), la cual recibe la señal del reloj se utiliza de la siguiente manera
+
+int n=rand()%X;
+
+Donde los valores posibles son entre 0 y X-1 debido que la función rand() trae un numero distinto a cero, con el modulo establecemos los límites.
+
+El número máximo por defecto de C que puede generarse (esto puede ser modificado) es 32767. Por lo que si se van a utilizar para generar números mayores a este limite se puede hacer de la siguiente manera:
+
+int n=(rand()%x)*(rand()%y);
+

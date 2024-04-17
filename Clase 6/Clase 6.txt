@@ -1,0 +1,104 @@
+Recorrido de Matrices:
+
+A tener en cuenta el recorrido de una matriz podemos  utilizar los iteradores for por ejemplo, a tener en cuenta , el bucle externo denominaremos de recorrido mas "lento" y el bucle anidado de recorrido mas "rápido".
+
+int i,j,matriz[m][n];// donde m y n son enteros mayores  o iguales a 2
+
+for(i=0;i<m;i++)
+
+{
+
+  for(j=0;j<n;j++)
+
+  { matriz[i][j]= (i+1)*(j+1);
+
+   printf("%d ",matriz[i][j]);
+
+ }
+
+printf("\n");
+
+}
+
+Se tiene que tener en cuenta el recorrido por cada iteración de i existe n iteraciones en j es por eso que podemos decir que el loop interno es de recorrido más "rápido".
+
+
+
+La matriz se puede recorrer en todos los sentidos que se deseen, el desafío está en determinar como se comportarán los iteradores.
+
+El primer ejemplo podemos ver que el recorrido se hace de arriba para abajo (filas) de izquierda a derecha (columnas).
+
+
+
+Recorrido Arriba para Abajo (filas), derecha a izquierda (columnas)
+
+for(i=0;i<m;i++)
+
+{
+
+  for(j=n-1;j>=0;j--)
+
+  { matriz[i][j]= (i+1)*(j+1);
+
+ }
+
+}
+
+
+Recorrido Arriba para Abajo (filas), derecha a izquierda (columnas)
+
+for(i=0;i<m;i++)
+
+{
+
+  for(j=n-1;j>=0;j--)
+
+  { matriz[i][j]= (i+1)*(j+1);
+
+ }
+
+}
+
+Recorrido Abajo  para Arriba (filas), izquierda a derecha (columnas)
+
+for(i=m-1;i>=0;i--)
+
+{
+
+  for(j=0j<n;j++)
+
+  { matriz[i][j]= (i+1)*(j+1);
+
+ }
+
+}
+
+Recorrido Abajo  para Arriba (filas), derecha a izquierda (columnas)
+
+for(i=m-1;i>=0;i--)
+
+{
+
+  for(j=n-1j>=0;j--)
+
+  { matriz[i][j]= (i+1)*(j+1);
+
+ }
+
+}
+
+
+Matrices Cuadradas
+
+se dice que una Matriz es cuadrada cuando las dimensiones de las filas y de las columnas son iguales es decir N>=2.
+
+Este tipo de matrices tienen dos componentes que le caracterizan la Diagonal Principal y la Diagonal Secundaria
+
+Dependiendo si N es par o impar las diagonales pueden interceptarse. Si N es par las diagonales no se interceptan. Si N es impar las diagonales se interceptan.
+
+Para determinar que durante el recorrido esta en la diagonal principal los iteradores son iguales es decir se cumple la condición i==j.
+
+Para determinar que durante el recorrido esta en la diagonal secundaria la suma de los iteradores es N-1 es decir i+j==N-1.
+
+Si la matriz tiene centro,(intercepción de diagonales) esteo se puede determinar durante el recorrido cuando se cumplen las dos condiciones previamente mencionadas es decir (i==j)&&(i+j==N-1)
+

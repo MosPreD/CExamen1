@@ -1,0 +1,71 @@
+Tipos de Datos y rango
+
+Tipos Basicos a utilizar	Tamaño en Bytes	Rango
+unsigned char	1	0 a 255
+char	1	-128 a 127
+short	2	-32.768 a 32,767
+unsigned int	4	0 a 4.294.967.295
+int	4	-2.147.483.648 a 2.147.483.647
+unsigned long	4	0 a 4.294.967.295
+long	4	-2.147.483.648 a 2.147.483.647
+long long	8	−9,223,372,036,854,775,807 a 9,223,372,036,854,775,807
+float	4	3,4x10-38 a 3,4x1038
+double	8	1,7x10-308 a 1,7x10308
+
+Operadores Matemáticos
+
+Así como hemos aprendido en la clase anterior la utilización del incremento en 1 realizando i++ (i=i+1), la utilización del ++ o - - realiza incremento o decremento en 1, para realizar con otros valores y operados los operadores son:
+
+A+=2 (A=A+2)
+
+A*=2  (A=A*2)
+
+A/=2  (A=A/2)
+
+A-=2  (A=A-2)
+
+A%=2 (A=A%2)
+
+Recordemos: La estructura del código en lenguaje C se compone de Cabecera donde van las bibliotecas utilizamos #include <biblioteca> para agregar todas las necesarias, las cabeceras de las funciones, si bien no son obligatorias al declararlas permiten que todas las funciones puedan verlas. Luego se encuentra la función main, donde se deben poner las llamadas a las funciones deseadas. Luego las demás funciones.
+
+Si las funciones tienen tipo de dato, estas deben devolver ese tipo de dato, una función al menos tiene un return y siempre devuelve 1 valor, ya se que lo retornado esté siendo esperado o no. Existen las funciones de tipo void (vacío) las cuales no devuelven valor.
+
+Sentencias y Funciones
+
+Hasta el momento hemos utilizado la sentencia ifhuevo{}   ifhuevo{}  else{} a este grupo se le agrega el ifhuevo{}else if(){} else{} para utilizar diversas opciones.
+
+Recuerden que valores numéricos en las sentencias de prueba lógica se considera al cero como falso y a todo valor distinto a cero como verdadero.
+
+Como iterador hasta el momento utilizamos el while () que cuya funcionalidad se puede describir como Mientras sea verdadera la condicion(es). A este iterador agregaremos el do { } while() a tener en cuenta con esta iteración al menos se realiza una vez ya que despues la primera ejecución se evalúa la condición
+
+Para salida utilizamos la función printf("texto con variable %d", numero) ;  donde numero es una variable tipo entero, la función remplaza en orden todas las variables citadas. Si deseamos imprimir un caracter se utiliza %c y si queremos imprimir un valor con punto flotante %f. Para formato se utiliza \n para salto de linea, \t para tabulación.
+
+Para entrada estamos utilizando el scanf("%d",&numero); siguiendo la logica del printf, el scanf respeta el formato solicitado, en caso de que se altere el texto el formato ya no será valido las variables tipo entero(int), punto flotante(float) y caracter(char) necesitan llevar el &. A esta función se la acompaña con la función getchar(); para la captura del enter del teclado.
+
+Función swtich()
+
+La función switch se utiliza para hacer comparacion de igualdad de una lista de valores posibles, es decir se evalua el contenido de la variable con una lista de valores posibles, que , dependiendo de que se cumpla pueden realizarse operaciones. Ej
+
+int a=3;
+
+switch(a)
+
+{ case 1: funcion1(a);
+
+               break;
+
+case 2: b=funcion2(a);
+
+               break;
+
+case 3: printf("se activo la opcion 3");
+
+            break;
+
+default: printf("no se encontro valor esperado");
+
+}
+
+Se utiliza break; para que una vez que encuentre el valor esperado salga del switch para evitar que se modifique el valor de "a" en este caso, se sigan evaluando los demás valores de manera no intencionada. 
+
+La sentencia switch() es muy practica para los menus.

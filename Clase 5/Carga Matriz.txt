@@ -1,0 +1,33 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <time.h> 
+void cargar(int x, int y, int matriz[x][y]);
+void imprimir(int x, int y, int matriz[x][y]);
+
+ int main() /* Rellenamos una matriz */ 
+ {      srand(time(NULL));
+        int numeros[3][4];
+		cargar(3,4,numeros);
+        imprimir(3,4,numeros);
+ return 0;
+}
+ void cargar(int x, int y, int matriz[x][y])
+ { int i,j;
+ 	for (i=0;i<x;i++) 
+	{
+	  for (j=0;j<y;j++)
+      { 
+       matriz[i][j]= 1 + rand()%150;
+      }
+    }
+}
+void imprimir(int x, int y, int matriz[x][y])
+ { int i,j;
+ 	for (i=0;i<x;i++) 
+    {
+     for (j=0;j<y;j++)
+     printf("%d\t",matriz[i][j]);
+     printf("\n");
+    } 
+}
+  
