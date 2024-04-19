@@ -10,6 +10,7 @@ void tablaASCII();
 void numero_float();
 void generar_matriz();
 void recorridoAlterno(int x, int y, int matriz[x][y]);
+void generarMatrizCuadrada();
 
 main()
 {
@@ -22,10 +23,12 @@ main()
 	imprimir(x,y,matriz);
 	printf("\nTabla Ascii\n");
 	tablaASCII();
-	printf("Numero float pseudo aleatorio\n");
+	printf("\nNumero float pseudo aleatorio\n");
 	numero_float();
-	printf("Ordenamiento\n");
+	printf("\nOrdenamiento\n");
 	generar_matriz();
+	printf("\nMatriz cuadrada\n");
+	generarMatrizCuadrada();
 	return 0;
 }
 void cargar(int x, int y, int matriz[x][y])
@@ -164,5 +167,52 @@ void recorridoAlterno(int x, int y, int matriz[x][y])
 				printf("%d,",matriz[i][j]);
 			}
 		}
+	}
+}
+//matriz cuadrada
+void generarMatrizCuadrada()
+{
+	int i,j,n,c;
+	n=2+rand()%7;
+	int matriz[n][n];
+	printf("Matriz %d x %d\n====================\n",n,n);
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if((i==j)&&(i+j==n-1))
+			{
+			matriz[i][j]=200;
+			}
+			else if(i==j)
+			{
+				do
+				{
+				c=52+rand()%47;		
+				}
+				while(c%2!=0);
+				matriz[i][j]=c;
+			}
+			else if((i+j==n-1))
+			{
+				do
+				{
+					c=1+rand()%48;		
+				}
+				while(c%2==0);
+				matriz[i][j]=c;
+			}
+		else
+		{
+			do
+			{
+				c=151+rand()%150;		
+			}
+			while(c==200);
+			matriz[i][j]=c;	
+		}
+		printf("%d\t",matriz[i][j]);
+		}
+		printf("\n");
 	}
 }
