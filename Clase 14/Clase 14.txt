@@ -1,0 +1,66 @@
+Manejo de Archivos
+
+Para la escritura y lectura de archivos se requieren de un puntero que  será de tipo FILE se encuentra el tipo de dato en la biblioteca stidio.h
+
+Se utilizan las siguientes funciones PUNTERO = fopen(PATH,PARAMETRO) y fclose(PUNTERO) en donde PATH irá el nombre y dirección del archivo es decir que si solo se pone el nombre del archivo este debe encontrarse en el mismo directorio que el ejecutable sino se utiliza el path correspondiente al sistema operativo. PARAMETRO corresponde a la forma que se va a manipular el archivo
+
+r : (read) lectura el puntero en donde se abrirá el archivo iniciara en el comienzo del fichero, la lectura se hará línea por línea
+
+w : (write) escritura, a tener en cuenta cuando el archivo se abre para escritura este iniciará la escritura en la primera línea por lo que existe algo dentro del archivo esto será remplazado
+
+a : (append) corresponde a la escritura al final del archivo se utiliza para escribir archivos tipo log, no recorre el archivo sino que solo interactúa con el final del archivo.
+
+fclose permite cerrar el archivo, en caso de que no se ejecute esta función el archivo no cerrará por ende no se guardará los cambios.
+
+Para la manipulación del archivo estaremos utilizando las funciones fscanF(PUNTERO,FORMATO,VARIABLES DONDE ESCRIBIR) y fprintf(PUNTERO,FORMATO,VARIABLES A IMPRIMIR)
+
+Ejemplo:
+
+#include <stdio.h>
+
+int main()
+
+{ 
+
+   char archivoentrada[] = "entrada.txt";
+
+   char archivosalida[] = "salida.txt";
+
+   char nombre[30];
+
+   int idNum;
+
+
+
+   FILE *sal, *ent;                    
+
+   ent = fopen(archivoentrada,"r");    
+
+  sal = fopen(archivosalida,"w");   
+
+  
+
+ 
+
+  while (fscanf(ent,"%s %d",nombre,&idNum) != EOF) 
+
+   {   
+
+  
+
+     fprintf(sal,"%d %s\n",idNum, nombre); 
+
+  }
+
+  
+
+  fprintf(sal,"----------\n"); 
+
+   fclose(ent); 
+
+   fclose(sal);       
+
+   return 0;
+
+} 
+

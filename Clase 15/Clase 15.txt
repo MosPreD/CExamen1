@@ -1,0 +1,150 @@
+Cambio de colores de texto en C
+
+ 
+
+Dentro de nuestro código de C podemos cambiar varios parámetros a la hora de visualizar nuestro programa en la consola, uno de estos parámetros que podemos modificar es el color del texto.
+
+Para hacer esto existen varias formas perno nosotros lo realizaremos mediante las secuencias de escape ANSI. Estas secuencias permiten manipular el texto impreso en la consola, incluyendo el color del texto y el fondo.
+
+ 
+
+A la hora de imprimir la tenemos que agregar el \x1b[XXm
+
+ 
+
+Donde XX es el código ANSI del color basándonos en la siguiente tabla
+
+Color
+
+Código ANSI
+
+Rojo
+
+\x1b[31m
+
+Verde
+
+\x1b[32m
+
+Amarillo
+
+\x1b[33m
+
+Azul
+
+\x1b[34m
+
+Magenta
+
+\x1b[35m
+
+Cian
+
+\x1b[36m
+
+Blanco
+
+\x1b[0m
+
+ 
+
+ 
+
+Por ejemplo el código para que el texto se vea de color rojo sería el siguiente
+
+ 
+
+printf("\x1b[31mEste texto es rojo.\n");
+
+ 
+
+Esto va a hacer que el código a partir de donde indicamos se vuelva del color que queramos, para volver a poner el color por defecto utilizamos el comando \x1b[0m que pone el texto en color Blanco
+
+
+ 
+
+Un ejemplo utilizando los colores de la tabla sería algo así
+
+ 
+
+#include <stdio.h>
+
+int main() {
+
+    // Imprimir texto en diferentes colores
+
+    printf("\x1b[31mEste texto es rojo.\n");
+
+    printf("\x1b[31m Este texto es verde.\n");
+
+    printf("\x1b[31m Este texto es amarillo.\n");
+
+    printf("\x1b[31m Este texto es azul.\n");
+
+    printf("\x1b[31m Este texto es magenta.\n");
+
+    printf("\x1b[31m Este texto es cian.\n");
+
+ 
+
+    system("pause");
+
+    return 0;
+
+}
+
+ 
+
+
+ 
+
+Otra forma en la que podemos definir el cambio de color es definiendo la macro al inicio para poder llamar el comando de cambio de color directamente
+
+ 
+
+#include <stdio.h>
+
+ 
+
+// Definimos algunas secuencias de escape ANSI para colores
+
+#define ROJO "\x1b[31m"
+
+#define VERDE "\x1b[32m"
+
+#define AMARILLO "\x1b[33m"
+
+#define AZUL "\x1b[34m"
+
+#define MAGENTA "\x1b[35m"
+
+#define CIAN "\x1b[36m"
+
+#define REINICIAR "\x1b[0m"
+
+ 
+
+int main() {
+
+    // Imprimir texto en diferentes colores
+
+    printf(ROJO"Este texto es rojo.\n" REINICIAR);
+
+    printf(VERDE "Este texto es verde.\n" REINICIAR);
+
+    printf(AMARILLO "Este texto es amarillo.\n" REINICIAR);
+
+    printf(AZUL "Este texto es azul.\n" REINICIAR);
+
+    printf(MAGENTA "Este texto es magenta.\n" REINICIAR);
+
+    printf(CIAN "Este texto es cian.\n" REINICIAR);
+
+ 
+
+    system("pause");
+
+    return 0;
+
+}
+
